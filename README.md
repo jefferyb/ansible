@@ -1,21 +1,28 @@
-# Dockerised Ansible
+# jefferyb/ansible
+This is image contains git and ansible
 
-## Versions:
+## Tags:
 
-* trusty 
-* xenial, latest
+-	[`xenial, latest` (*Dockerfile*)](https://github.com/jefferyb/ansible-docker/blob/master/xenial/Dockerfile)
+-	[`trusty` (*Dockerfile*)](https://github.com/jefferyb/ansible-docker/blob/master/trusty/Dockerfile)
 
 ## Volumes:
 
-* VOLUME /playbooks     # For your playbooks
-* VOLUME /root/.ssh     # For your ssh keys
-* VOLUME /etc/ansible   # For configuration
+##### For your playbooks
+* *-v* /playbooks
 
-* WORKDIR /playbooks
+##### For your ssh keys
+* *-v* /root/.ssh
+
+##### For configuration
+* *-v* /etc/ansible
+
+##### Working Directory
+* *WORKDIR* /playbooks
 
 ## Usage Examples:
 
-### Ping for testing:
+#### Ping for testing:
 
     $ docker run --rm -it \
         -v $HOME/.ssh:/root/.ssh \
@@ -24,7 +31,7 @@
         jefferyb/ansible:xenial \
         ansible -u $USER remote_server -m ping
 
-### Bash Command line:
+#### Bash Command line:
 
     $ docker run --rm -it \
         -v $HOME/.ssh:/root/.ssh \
@@ -36,7 +43,7 @@
 
 and you can start using ansible as normal
 
-### Useful hints:
+#### Useful hints:
 
 Assuming your playbooks are located at `$HOME/playbooks` and your hosts file is located at `$HOME/playbooks/hosts`, then you can do:
 
